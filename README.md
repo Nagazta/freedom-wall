@@ -1,16 +1,70 @@
-# React + Vite
+# Freedom Wall — Soft Rebirth
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An anonymous, public "freedom wall" web application for Christmas and New Year reflection. A safe, calm space where people can share unsaid feelings before the year ends.
 
-Currently, two official plugins are available:
+## Theme
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Soft Rebirth** — Christmas warmth + New Year renewal
 
-## React Compiler
+A place to release the words you never said this year, anonymously and honestly.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the ESLint configuration
+- **Anonymous Posting** — No accounts, no usernames, just honest words
+- **Mood Tags** — Express feelings: Gratitude, Regret, Love, Apology, Hope
+- **Public Feed** — Read all confessions, filter by mood, or discover random posts
+- **Time Lock** — Posting closes Dec 31, 2025 at 11:59 PM UTC
+- **Read-Only Archive** — After the deadline, the wall becomes a time capsule
+- **Safety First** — Basic profanity filtering and rate limiting (1 post per minute)
+- **Beautiful UX** — Soft animations, dark calming theme, gentle snow effects
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech Stack
+
+- **Frontend:** React + Vite
+- **Styling:** Custom CSS with Soft Rebirth theme
+- **Animations:** Framer Motion
+- **Backend:** Supabase (PostgreSQL)
+- **Security:** Row Level Security (RLS), Anonymous access only
+
+## Setup Instructions
+
+### 1. Clone the Repository
+
+```bash
+git clone <your-repo-url>
+cd freedom-wall
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Configure Environment Variables
+
+The `.env` file has already been created with your Supabase credentials:
+
+```env
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_PUBLISHABLE_DEFAULT_KEY=your_anon_key
+```
+
+### 4. Run the Development Server
+
+```bash
+npm run dev
+```
+
+The app should now be running at `http://localhost:5173`
+
+### 6. Build for Production
+
+```bash
+npm run build
+npm run preview
+```
+
+**2025 — Soft Rebirth**
+
+_Anonymous. Honest. Forever._

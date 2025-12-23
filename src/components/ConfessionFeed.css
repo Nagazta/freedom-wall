@@ -1,0 +1,227 @@
+.confession-feed {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.feed-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.feed-title {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-size: 2rem;
+  color: var(--text-main);
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.feed-controls {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.mood-filter {
+  padding: 0.75rem 1.25rem;
+  background: var(--bg-card);
+  border: 1px solid rgba(159, 184, 160, 0.2);
+  border-radius: 10px;
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mood-filter:hover {
+  border-color: var(--accent-sage);
+}
+
+.mood-filter:focus {
+  outline: none;
+  border-color: var(--accent-sage);
+  box-shadow: 0 0 0 3px rgba(155, 184, 160, 0.1);
+}
+
+.random-button {
+  padding: 0.75rem 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid rgba(191, 214, 226, 0.3);
+  border-radius: 10px;
+  color: var(--accent-ice);
+  font-family: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.random-button:hover:not(:disabled) {
+  border-color: var(--accent-ice);
+  background: rgba(191, 214, 226, 0.05);
+}
+
+.random-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.feed-error {
+  padding: 1rem;
+  background: rgba(248, 113, 113, 0.1);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  border-radius: 10px;
+  color: #FCA5A5;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.feed-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  gap: 1rem;
+  color: var(--text-muted);
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(155, 184, 160, 0.2);
+  border-top-color: var(--accent-sage);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.feed-empty {
+  padding: 4rem 2rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.confessions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.confession-card {
+  position: relative;
+  padding: 1.75rem;
+  background: var(--bg-card);
+  border: 1px solid rgba(155, 184, 160, 0.15);
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.confession-card:hover {
+  border-color: rgba(155, 184, 160, 0.3);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.confession-card.highlight {
+  border-color: var(--accent-gold);
+  box-shadow: 0 6px 24px rgba(243, 201, 105, 0.3);
+}
+
+.mood-tag {
+  display: inline-block;
+  padding: 0.35rem 0.85rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 1rem;
+}
+
+.mood-gratitude {
+  background: rgba(243, 201, 105, 0.15);
+  color: var(--accent-gold);
+  border: 1px solid rgba(243, 201, 105, 0.3);
+}
+
+.mood-regret {
+  background: rgba(169, 183, 190, 0.15);
+  color: #B0BEC5;
+  border: 1px solid rgba(169, 183, 190, 0.3);
+}
+
+.mood-love {
+  background: rgba(244, 143, 177, 0.15);
+  color: #F48FB1;
+  border: 1px solid rgba(244, 143, 177, 0.3);
+}
+
+.mood-apology {
+  background: rgba(191, 214, 226, 0.15);
+  color: var(--accent-ice);
+  border: 1px solid rgba(191, 214, 226, 0.3);
+}
+
+.mood-hope {
+  background: rgba(155, 184, 160, 0.15);
+  color: var(--accent-sage);
+  border: 1px solid rgba(155, 184, 160, 0.3);
+}
+
+.confession-message {
+  color: var(--text-main);
+  line-height: 1.7;
+  font-size: 1rem;
+  margin: 0 0 1rem 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.confession-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.confession-time {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+@media (max-width: 640px) {
+  .confession-feed {
+    padding: 0 1rem;
+  }
+
+  .feed-title {
+    font-size: 1.5rem;
+  }
+
+  .feed-controls {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .mood-filter,
+  .random-button {
+    width: 100%;
+  }
+
+  .confession-card {
+    padding: 1.25rem;
+  }
+}

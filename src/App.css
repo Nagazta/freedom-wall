@@ -1,42 +1,159 @@
-#root {
-  max-width: 1280px;
+.app {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.app-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2rem 1.5rem;
+}
+
+.app-main {
+  margin-bottom: 4rem;
+}
+
+/* Release Button - Floating CTA */
+.release-button {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  padding: 1.25rem 2rem;
+  background: linear-gradient(135deg, var(--accent-gold) 0%, #D4A853 100%);
+  border: none;
+  border-radius: 50px;
+  color: var(--bg-main);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(243, 201, 105, 0.4);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.release-button:hover {
+  box-shadow: 0 12px 32px rgba(243, 201, 105, 0.5);
+  transform: translateY(-2px);
+}
+
+.release-button-icon {
+  font-size: 1.25rem;
+}
+
+.release-button-text {
+  font-size: 1rem;
+}
+
+/* Deadline Banner */
+.deadline-banner {
   text-align: center;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  background: rgba(243, 201, 105, 0.08);
+  border: 1px solid rgba(243, 201, 105, 0.2);
+  border-radius: 12px;
+  color: var(--accent-gold);
+  font-size: 0.9rem;
+  opacity: 0.9;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Locked Banner */
+.locked-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1.5rem 2rem;
+  margin-bottom: 3rem;
+  background: var(--bg-card);
+  border: 1px solid rgba(243, 201, 105, 0.3);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(243, 201, 105, 0.1);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.locked-icon {
+  font-size: 2.5rem;
+  opacity: 0.8;
+}
+
+.locked-content {
+  flex: 1;
+  text-align: left;
+}
+
+.locked-content strong {
+  display: block;
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-size: 1.25rem;
+  color: var(--text-main);
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+}
+
+.locked-content p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Footer */
+.app-footer {
+  text-align: center;
+  padding: 3rem 1rem 2rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  border-top: 1px solid rgba(155, 184, 160, 0.1);
+}
+
+.app-footer p {
+  margin: 0.5rem 0;
+}
+
+.footer-year {
+  color: var(--accent-sage);
+  font-style: italic;
+  font-size: 0.85rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 1.5rem 1rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  .release-button {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    padding: 1rem 1.5rem;
   }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  .release-button-text {
+    display: none;
   }
-}
 
-.card {
-  padding: 2em;
-}
+  .release-button-icon {
+    font-size: 1.5rem;
+  }
 
-.read-the-docs {
-  color: #888;
+  .locked-banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  .locked-content {
+    text-align: center;
+  }
+
+  .locked-content strong {
+    font-size: 1.1rem;
+  }
 }
