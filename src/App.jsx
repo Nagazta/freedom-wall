@@ -59,9 +59,22 @@ function App() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <span className="release-button-icon">✍️</span>
+                {/* Pen / Writing SVG */}
+                <span className="release-button-icon" style={{ display: 'inline-flex', marginRight: '0.5rem' }}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M3 17.25V21h3.75l11.065-11.065-3.75-3.75L3 17.25zm18.71-11.04c.39-.39.39-1.02 0-1.41l-2.5-2.5a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.99-1.67z"/>
+                  </svg>
+                </span>
+
                 <span className="release-button-text">Release your words</span>
               </motion.button>
+
 
               {/* Deadline Notice */}
               <motion.div

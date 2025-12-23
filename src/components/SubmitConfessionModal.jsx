@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { supabase, MOODS } from '../lib/supabase';
 import { containsProfanity, getProfanityWarning } from '../utils/profanityFilter';
@@ -15,7 +15,20 @@ const SubmitConfessionModal = ({ isOpen, onClose, onConfessionAdded }) => {
 
   const MIN_CHARS = 1;
   const MAX_CHARS = 500;
-  const RATE_LIMIT_MS = 60000; // 1 minute
+  const RATE_LIMIT_MS = 60000;
+
+  // Body scroll lock
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add('modal-open');
+    } else {
+      document.body.classList.remove('modal-open');
+    }
+
+    return () => {
+      document.body.classList.remove('modal-open');
+    };
+  }, [isOpen]);
 
   const handleClose = () => {
     if (!loading) {
@@ -32,7 +45,6 @@ const SubmitConfessionModal = ({ isOpen, onClose, onConfessionAdded }) => {
     setError('');
     setSuccess(false);
 
-    // Validation
     if (message.trim().length < MIN_CHARS) {
       setError('Please write something before submitting.');
       return;
@@ -43,7 +55,6 @@ const SubmitConfessionModal = ({ isOpen, onClose, onConfessionAdded }) => {
       return;
     }
 
-    // Rate limiting
     const now = Date.now();
     if (now - lastPostTime < RATE_LIMIT_MS) {
       const remainingSeconds = Math.ceil((RATE_LIMIT_MS - (now - lastPostTime)) / 1000);
@@ -51,7 +62,6 @@ const SubmitConfessionModal = ({ isOpen, onClose, onConfessionAdded }) => {
       return;
     }
 
-    // Profanity check
     if (containsProfanity(message)) {
       setError(getProfanityWarning());
       return;
@@ -81,12 +91,10 @@ const SubmitConfessionModal = ({ isOpen, onClose, onConfessionAdded }) => {
         setSuccess(true);
         setLastPostTime(now);
 
-        // Notify parent component
         if (onConfessionAdded && data && data[0]) {
           onConfessionAdded(data[0]);
         }
 
-        // Auto-close after success
         setTimeout(() => {
           handleClose();
         }, 2500);
@@ -106,7 +114,6 @@ const SubmitConfessionModal = ({ isOpen, onClose, onConfessionAdded }) => {
     <AnimatePresence>
       {isOpen && (
         <>
-          {/* Backdrop */}
           <motion.div
             className="modal-backdrop"
             initial={{ opacity: 0 }}
@@ -115,7 +122,6 @@ const SubmitConfessionModal = ({ isOpen, onClose, onConfessionAdded }) => {
             onClick={handleClose}
           />
 
-          {/* Modal */}
           <motion.div
             className="submit-modal"
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -123,7 +129,7 @@ const SubmitConfessionModal = ({ isOpen, onClose, onConfessionAdded }) => {
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ duration: 0.3 }}
           >
-            <button className="modal-close" onClick={handleClose} disabled={loading}>
+            <button className="modal-close" onClick={handleClose} disabled={loading} aria-label="Close modal">
               ✕
             </button>
 
@@ -141,6 +147,7 @@ const SubmitConfessionModal = ({ isOpen, onClose, onConfessionAdded }) => {
                   rows="8"
                   disabled={loading}
                   autoFocus
+                  aria-label="Confession message"
                 />
 
                 <div className="submit-footer">
