@@ -2,20 +2,52 @@
 // This is a simple implementation - for production, consider using a library like 'bad-words'
 
 const bannedWords = [
-  // Profanity
+  // English profanity
   'fuck', 'shit', 'bitch', 'asshole', 'bastard', 'damn', 'cunt',
   'dick', 'pussy', 'cock', 'whore', 'slut', 'motherfucker',
 
-  // Hate speech keywords
-  'nazi', 'hitler', 'genocide', 'terrorist', 'kill yourself',
-  'kys', 'die', 'death to', 'hate you', 'i hope you die',
+  // Hate / violence
+  'nazi', 'hitler', 'genocide', 'terrorist',
+  'kill yourself', 'kys', 'die', 'death to',
+  'i hope you die', 'hate you',
 
-  // Slurs (partial list - add more as needed)
-  'nigger', 'nigga', 'faggot', 'tranny', 'retard', 'retarded',
+  // Slurs (partial)
+  'nigger', 'nigga', 'faggot', 'tranny',
+  'retard', 'retarded',
 
-  // Common variations
-  'f**k', 'sh*t', 'b*tch', 'a**hole', 'f*ck', 's**t'
+  // Variations
+  'f**k', 'sh*t', 'b*tch', 'a**hole', 'f*ck', 's**t',
+
+  // Tagalog profanity / insults
+  'putangina', 'puta', 'pota', 'punyeta', 'punyeta',
+  'gago', 'tanga', 'bobo', 'ulol', 'tarantado',
+  'hayop ka', 'leche', 'bwisit', 'bwiset',
+  'kingina', 'kupal', 'kantot', 'jakol',
+  'pokpok', 'malandi', 'sira ulo', 'walang utak',
+
+  // Tagalog hate / harassment
+  'mamatay ka', 'sana mamatay ka',
+  'pakamatay ka', 'magpakamatay ka',
+  'walang kwenta', 'basura ka',
+
+  // Bisaya / Cebuano profanity
+  'yawa', 'pisti', 'animal ka', 'buang',
+  'atay', 'bilat', 'iyot', 'jakol',
+  'pakyu', 'piste', 'amang', 'giatay',
+  'bayot', 'bayut', 'iyut', 'jakul',
+
+  // Bisaya insults / harassment
+  'wala kay pulos', 'bogo', 'bogoa',
+  'patay ka', 'mamatay ka',
+  'pagpakamatay', 'pakamatay',
+  'yati ka',
+
+  // Mixed / slang spellings
+  'potangina', 'putragis',
+  'pucha', 'pucha naman',
+  'pisti yawa'
 ];
+
 
 const createPattern = (words) => {
   // Create regex pattern that matches words with common character substitutions

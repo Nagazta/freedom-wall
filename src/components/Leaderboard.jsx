@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { supabase } from '../lib/supabase';
+import ReportButton from './ReportButton';
 import './Leaderboard.css';
 
 const LeaderboardCard = ({ confession, index }) => {
@@ -29,22 +30,25 @@ const LeaderboardCard = ({ confession, index }) => {
       <p className="leaderboard-message">{confession.message}</p>
       <div className="leaderboard-footer">
         <span className="leaderboard-time">{formatDate(confession.created_at)}</span>
-        <div className="leaderboard-hearts">
-          {/* Heart SVG */}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-          </svg>
-          <span className="leaderboard-count">{confession.reaction_count}</span>
+        <div className="leaderboard-actions">
+          <div className="leaderboard-hearts">
+            {/* Heart SVG */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+            </svg>
+            <span className="leaderboard-count">{confession.reaction_count}</span>
+          </div>
+          <ReportButton confessionId={confession.id} />
         </div>
       </div>
     </motion.div>

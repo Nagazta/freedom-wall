@@ -1,0 +1,28 @@
+.report-button {
+  background: none;
+  border: none;
+  padding: 0.25rem;
+  color: var(--text-muted);
+  opacity: 0.5;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.report-button:hover {
+  opacity: 1;
+  color: #F87171;
+  background: rgba(248, 113, 113, 0.1);
+}
+
+.report-button:active {
+  transform: scale(0.95);
+}
+
+.report-button svg {
+  width: 14px;
+  height: 14px;
+}

@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { supabase, MOODS, isLatest } from '../lib/supabase';
 import { getClientHash } from '../utils/clientHash';
 import HeartReaction from './HeartReaction';
+import ReportButton from './ReportButton';
 import './FreedomWall.css';
 
 const ConfessionCard = ({ confession, index }) => {
@@ -42,11 +43,14 @@ const ConfessionCard = ({ confession, index }) => {
       <p className="wall-message">{confession.message}</p>
       <div className="wall-footer">
         <span className="wall-time">{formatDate(confession.created_at)}</span>
-        <HeartReaction
-          confessionId={confession.id}
-          initialCount={confession.reaction_count || 0}
-          initialHasReacted={confession.has_reacted || false}
-        />
+        <div className="wall-actions">
+          <HeartReaction
+            confessionId={confession.id}
+            initialCount={confession.reaction_count || 0}
+            initialHasReacted={confession.has_reacted || false}
+          />
+          <ReportButton confessionId={confession.id} />
+        </div>
       </div>
     </motion.div>
   );

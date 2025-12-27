@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import FreedomWall from './components/FreedomWall';
 import Leaderboard from './components/Leaderboard';
+import AdminReports from './components/AdminReports';
 import SubmitConfessionModal from './components/SubmitConfessionModal';
 import WelcomePage from './components/WelcomePage';
 import SnowAnimation from './components/SnowAnimation';
@@ -11,14 +12,30 @@ function App() {
   const [canPost, setCanPost] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newConfession, setNewConfession] = useState(null);
-  const [currentView, setCurrentView] = useState('wall'); // 'wall' or 'leaderboard'
+  const [currentView, setCurrentView] = useState('wall'); // 'wall', 'leaderboard', or 'admin'
   const [showWelcome, setShowWelcome] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     // Check if user has visited before
     const hasVisited = localStorage.getItem('freedom-wall-visited');
     if (hasVisited) {
       setShowWelcome(false);
+    }
+
+    // Check if accessing admin route
+    const currentPath = window.location.hash || window.location.pathname;
+    if (currentPath.includes('admin')) {
+      const adminKey = prompt('Enter admin key:');
+      const ADMIN_KEY = import.meta.env.VITE_ADMIN_KEY || 'admin123';
+
+      if (adminKey === ADMIN_KEY) {
+        setIsAdmin(true);
+        setCurrentView('admin');
+      } else {
+        alert('Invalid admin key');
+        window.location.hash = '';
+      }
     }
 
 
@@ -119,9 +136,11 @@ function App() {
 
           {currentView === 'wall' ? (
             <FreedomWall newConfession={newConfession} />
-          ) : (
+          ) : currentView === 'leaderboard' ? (
             <Leaderboard />
-          )}
+          ) : currentView === 'admin' && isAdmin ? (
+            <AdminReports />
+          ) : null}
         </main>
 
         <motion.footer

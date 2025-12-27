@@ -169,6 +169,12 @@
   font-style: italic;
 }
 
+.leaderboard-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
 .leaderboard-hearts {
   display: flex;
   align-items: center;

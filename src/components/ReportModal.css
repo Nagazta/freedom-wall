@@ -1,0 +1,251 @@
+.report-modal {
+  position: fixed;
+  top: 5%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 540px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: linear-gradient(
+    135deg,
+    var(--bg-card) 0%,
+    rgba(20, 38, 45, 0.95) 100%
+  );
+  border: 1px solid rgba(155, 184, 160, 0.3);
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.5),
+    0 0 60px rgba(155, 184, 160, 0.15);
+  z-index: 3001;
+}
+
+.report-modal-title {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-size: 1.75rem;
+  font-weight: 400;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+  letter-spacing: 0.5px;
+}
+
+.report-modal-description {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.report-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.report-label {
+  display: block;
+  color: var(--text-main);
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+  opacity: 0.95;
+}
+
+.report-reasons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.report-reason-option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  background: rgba(155, 184, 160, 0.05);
+  border: 1px solid rgba(155, 184, 160, 0.15);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.report-reason-option:hover {
+  background: rgba(155, 184, 160, 0.1);
+  border-color: rgba(155, 184, 160, 0.3);
+}
+
+.report-reason-option input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: var(--accent-sage);
+}
+
+.report-reason-option span {
+  color: var(--text-main);
+  font-size: 0.95rem;
+  flex: 1;
+}
+
+.report-reason-option input[type="radio"]:checked + span {
+  color: var(--accent-sage);
+  font-weight: 500;
+}
+
+.report-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.report-textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 1rem;
+  background: var(--bg-input);
+  border: 1px solid rgba(155, 184, 160, 0.2);
+  border-radius: 12px;
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  resize: vertical;
+  transition: all 0.3s ease;
+}
+
+.report-textarea:focus {
+  outline: none;
+  border-color: var(--accent-sage);
+  box-shadow: 0 0 0 3px rgba(155, 184, 160, 0.1);
+}
+
+.report-textarea::placeholder {
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+.report-char-count {
+  text-align: right;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  opacity: 0.7;
+}
+
+.report-error {
+  padding: 1rem;
+  background: rgba(248, 113, 113, 0.1);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  border-radius: 10px;
+  color: #FCA5A5;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.report-modal-button {
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, var(--accent-sage) 0%, rgba(155, 184, 160, 0.9) 100%);
+  border: none;
+  border-radius: 50px;
+  color: var(--bg-main);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow:
+    0 4px 16px rgba(155, 184, 160, 0.3),
+    0 0 30px rgba(155, 184, 160, 0.1);
+  letter-spacing: 0.3px;
+}
+
+.report-modal-button:hover:not(:disabled) {
+  box-shadow:
+    0 6px 20px rgba(155, 184, 160, 0.4),
+    0 0 40px rgba(155, 184, 160, 0.15);
+  transform: translateY(-2px);
+}
+
+.report-modal-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.report-modal-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.report-success {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.report-success .success-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--accent-sage) 0%, rgba(155, 184, 160, 0.8) 100%);
+  border-radius: 50%;
+  color: var(--bg-main);
+  font-size: 2.5rem;
+  font-weight: 300;
+  box-shadow: 0 8px 24px rgba(155, 184, 160, 0.3);
+}
+
+.report-success h3 {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--accent-sage);
+  margin-bottom: 1rem;
+}
+
+.report-success p {
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.report-already-submitted {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.report-already-submitted p {
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  .report-modal {
+    padding: 2rem 1.5rem;
+    max-height: 85vh;
+    top: 10%;
+    left: 6%;
+  }
+
+  .report-modal-title {
+    font-size: 1.5rem;
+  }
+
+  .report-modal-description {
+    font-size: 0.9rem;
+  }
+
+  .report-reason-option {
+    padding: 0.75rem 0.875rem;
+  }
+
+  .report-reason-option span {
+    font-size: 0.9rem;
+  }
+}
