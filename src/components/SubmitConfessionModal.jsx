@@ -75,17 +75,13 @@ const SubmitConfessionModal = ({ isOpen, onClose, onConfessionAdded }) => {
         .insert([
           {
             message: message.trim(),
-            mood: mood || null,
+            mood: mood || 'Others',
           },
         ])
         .select();
 
       if (insertError) {
-        if (insertError.message.includes('violates check constraint')) {
-          setError('Posting is no longer allowed. The year has ended.');
-        } else {
-          setError('Failed to release your words. Please try again.');
-        }
+        setError('Failed to release your words. Please try again.');
         console.error('Error inserting confession:', insertError);
       } else {
         setSuccess(true);

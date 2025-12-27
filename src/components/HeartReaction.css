@@ -1,0 +1,66 @@
+.heart-reaction {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.heart-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: transparent;
+  border: 1px solid rgba(243, 201, 105, 0.2);
+  border-radius: 20px;
+  color: var(--accent-gold);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.heart-button:hover:not(:disabled) {
+  background: rgba(243, 201, 105, 0.1);
+  border-color: var(--accent-gold);
+}
+
+.heart-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.heart-button.reacted {
+  background: rgba(243, 201, 105, 0.15);
+  border-color: var(--accent-gold);
+}
+
+.heart-button svg {
+  flex-shrink: 0;
+}
+
+.heart-count {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--accent-gold);
+  min-width: 1.25rem;
+  text-align: center;
+}
+
+.heart-error {
+  font-size: 0.75rem;
+  color: #FCA5A5;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .heart-button {
+    padding: 0.425rem 0.625rem;
+  }
+
+  .heart-button svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .heart-count {
+    font-size: 0.8125rem;
+  }
+}

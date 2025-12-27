@@ -180,6 +180,12 @@
   border: 1px solid rgba(155, 184, 160, 0.3);
 }
 
+.mood-others {
+  background: rgba(169, 183, 190, 0.1);
+  color: #9BA8AF;
+  border: 1px solid rgba(169, 183, 190, 0.25);
+}
+
 .confession-message {
   color: var(--text-main);
   line-height: 1.7;

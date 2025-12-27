@@ -1,0 +1,214 @@
+.leaderboard {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem;
+}
+
+.leaderboard-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem 0;
+}
+
+.leaderboard-title {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 400;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 20px rgba(243, 201, 105, 0.3);
+}
+
+.leaderboard-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.leaderboard-error {
+  padding: 1rem;
+  background: rgba(248, 113, 113, 0.1);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  border-radius: 10px;
+  color: #FCA5A5;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.leaderboard-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 2rem;
+  gap: 1rem;
+  color: var(--text-muted);
+}
+
+.leaderboard-empty {
+  padding: 5rem 2rem;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.leaderboard-empty-icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.6;
+}
+
+.leaderboard-empty p {
+  font-size: 1.1rem;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.leaderboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.leaderboard-card {
+  position: relative;
+  padding: 2rem;
+  background: var(--bg-card);
+  border: 1px solid rgba(155, 184, 160, 0.15);
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.leaderboard-card:hover {
+  border-color: rgba(243, 201, 105, 0.3);
+  box-shadow: 0 6px 24px rgba(243, 201, 105, 0.15);
+  transform: translateY(-4px);
+}
+
+.leaderboard-mood-tag {
+  display: inline-block;
+  padding: 0.35rem 0.85rem;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 1rem;
+  align-self: flex-start;
+  flex-shrink: 0;
+  min-height: 1.7rem;
+}
+
+.mood-gratitude {
+  background: rgba(243, 201, 105, 0.15);
+  color: var(--accent-gold);
+  border: 1px solid rgba(243, 201, 105, 0.3);
+}
+
+.mood-regret {
+  background: rgba(169, 183, 190, 0.15);
+  color: #B0BEC5;
+  border: 1px solid rgba(169, 183, 190, 0.3);
+}
+
+.mood-love {
+  background: rgba(244, 143, 177, 0.15);
+  color: #F48FB1;
+  border: 1px solid rgba(244, 143, 177, 0.3);
+}
+
+.mood-apology {
+  background: rgba(191, 214, 226, 0.15);
+  color: var(--accent-ice);
+  border: 1px solid rgba(191, 214, 226, 0.3);
+}
+
+.mood-hope {
+  background: rgba(155, 184, 160, 0.15);
+  color: var(--accent-sage);
+  border: 1px solid rgba(155, 184, 160, 0.3);
+}
+
+.mood-others {
+  background: rgba(169, 183, 190, 0.1);
+  color: #9BA8AF;
+  border: 1px solid rgba(169, 183, 190, 0.25);
+}
+
+.leaderboard-message {
+  color: var(--text-main);
+  line-height: 1.7;
+  font-size: 1rem;
+  margin: 0 0 auto 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  flex-grow: 1;
+}
+
+.leaderboard-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(155, 184, 160, 0.1);
+}
+
+.leaderboard-time {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+.leaderboard-hearts {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.75rem;
+  background: rgba(243, 201, 105, 0.15);
+  border: 1px solid rgba(243, 201, 105, 0.3);
+  border-radius: 20px;
+  color: var(--accent-gold);
+}
+
+.leaderboard-hearts svg {
+  flex-shrink: 0;
+}
+
+.leaderboard-count {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .leaderboard {
+    padding: 0 1rem 3rem;
+  }
+
+  .leaderboard-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .leaderboard-card {
+    padding: 1.5rem;
+    min-height: 150px;
+  }
+
+  .leaderboard-empty-icon {
+    font-size: 3rem;
+  }
+
+  .leaderboard-empty p {
+    font-size: 1rem;
+  }
+}

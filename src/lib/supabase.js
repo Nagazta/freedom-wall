@@ -14,13 +14,14 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   },
 });
 
-// Deadline for posting (Dec 31, 2025, 11:59 PM UTC)
-export const POSTING_DEADLINE = new Date('2025-12-31T23:59:59Z');
-
-// Check if posting is still allowed
-export const isPostingAllowed = () => {
-  return new Date() < POSTING_DEADLINE;
-};
-
 // Available moods
-export const MOODS = ['Gratitude', 'Regret', 'Love', 'Apology', 'Hope'];
+export const MOODS = ['Gratitude', 'Regret', 'Love', 'Apology', 'Hope', 'Others'];
+
+// Helper to check if a confession is from the last 24 hours
+export const isLatest = (dateString) => {
+  const created = new Date(dateString);
+  const now = new Date();
+  const diffMs = now - created;
+  const diffHours = diffMs / (1000 * 60 * 60);
+  return diffHours <= 24;
+};

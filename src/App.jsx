@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { isPostingAllowed, POSTING_DEADLINE } from './lib/supabase';
 import FreedomWall from './components/FreedomWall';
+import Leaderboard from './components/Leaderboard';
 import SubmitConfessionModal from './components/SubmitConfessionModal';
-import WelcomeModal from './components/WelcomeModal';
+import WelcomePage from './components/WelcomePage';
 import SnowAnimation from './components/SnowAnimation';
 import './App.css';
 
@@ -11,10 +11,17 @@ function App() {
   const [canPost, setCanPost] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newConfession, setNewConfession] = useState(null);
+  const [currentView, setCurrentView] = useState('wall'); // 'wall' or 'leaderboard'
+  const [showWelcome, setShowWelcome] = useState(true);
 
   useEffect(() => {
-    // Check posting deadline
-    setCanPost(isPostingAllowed());
+    // Check if user has visited before
+    const hasVisited = localStorage.getItem('freedom-wall-visited');
+    if (hasVisited) {
+      setShowWelcome(false);
+    }
+
+
 
     // Set up interval to check deadline every minute
     const interval = setInterval(() => {
@@ -30,24 +37,41 @@ function App() {
     setTimeout(() => setNewConfession(null), 100);
   };
 
-  const formatDeadline = () => {
-    return POSTING_DEADLINE.toLocaleDateString('en-US', {
-      month: 'long',
-      day: 'numeric',
-      year: 'numeric',
-      hour: 'numeric',
-      minute: '2-digit',
-      timeZoneName: 'short',
-    });
-  };
+
+
+  // Show welcome page on first visit
+  if (showWelcome) {
+    return <WelcomePage onEnter={() => setShowWelcome(false)} />;
+  }
 
   return (
     <div className="app">
       <SnowAnimation />
 
       <div className="app-container">
+        {/* Navigation */}
+        <motion.nav
+          className="app-nav"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <button
+            className={`nav-button ${currentView === 'wall' ? 'active' : ''}`}
+            onClick={() => setCurrentView('wall')}
+          >
+            Freedom Wall
+          </button>
+          <button
+            className={`nav-button ${currentView === 'leaderboard' ? 'active' : ''}`}
+            onClick={() => setCurrentView('leaderboard')}
+          >
+            Resonance
+          </button>
+        </motion.nav>
+
         <main className="app-main">
-          {canPost ? (
+          {canPost && currentView === 'wall' && (
             <>
               {/* Floating Release Button */}
               <motion.button
@@ -75,18 +99,10 @@ function App() {
                 <span className="release-button-text">Release your words</span>
               </motion.button>
 
-
-              {/* Deadline Notice */}
-              <motion.div
-                className="deadline-banner"
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-              >
-                Posting closes: {formatDeadline()}
-              </motion.div>
             </>
-          ) : (
+          )}
+
+          {!canPost && currentView === 'wall' && (
             <motion.div
               className="locked-banner"
               initial={{ opacity: 0, scale: 0.95 }}
@@ -101,7 +117,11 @@ function App() {
             </motion.div>
           )}
 
-          <FreedomWall newConfession={newConfession} />
+          {currentView === 'wall' ? (
+            <FreedomWall newConfession={newConfession} />
+          ) : (
+            <Leaderboard />
+          )}
         </main>
 
         <motion.footer
@@ -114,9 +134,6 @@ function App() {
           <p className="footer-year">2025 — Soft Rebirth</p>
         </motion.footer>
       </div>
-
-      {/* Welcome Modal */}
-      <WelcomeModal />
 
       {/* Submit Modal */}
       <SubmitConfessionModal

@@ -39,6 +39,22 @@
   flex-wrap: wrap;
 }
 
+.wall-section {
+  margin-bottom: 4rem;
+}
+
+.wall-section-title {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 400;
+  color: var(--text-main);
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(155, 184, 160, 0.2);
+  opacity: 0.9;
+  letter-spacing: 0.5px;
+}
+
 .wall-mood-filter {
   padding: 0.75rem 1.5rem;
   background: var(--bg-card);
@@ -129,9 +145,9 @@
 
 .wall-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
 }
 
 .wall-card {
@@ -144,7 +160,7 @@
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
-  min-height: 180px;
+  height: 100%;
 }
 
 .wall-card:hover {
@@ -168,6 +184,8 @@
   letter-spacing: 0.5px;
   margin-bottom: 1rem;
   align-self: flex-start;
+  flex-shrink: 0;
+  min-height: 1.7rem;
 }
 
 .mood-gratitude {
@@ -200,6 +218,12 @@
   border: 1px solid rgba(155, 184, 160, 0.3);
 }
 
+.mood-others {
+  background: rgba(169, 183, 190, 0.1);
+  color: #9BA8AF;
+  border: 1px solid rgba(169, 183, 190, 0.25);
+}
+
 .wall-message {
   color: var(--text-main);
   line-height: 1.7;
@@ -212,7 +236,7 @@
 
 .wall-footer {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   margin-top: 1rem;
   padding-top: 1rem;
@@ -223,6 +247,63 @@
   color: var(--text-muted);
   font-size: 0.8rem;
   font-style: italic;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  padding: 1rem 0;
+}
+
+.pagination-btn {
+  min-width: 2.5rem;
+  height: 2.5rem;
+  padding: 0.5rem;
+  background: var(--bg-card);
+  border: 1px solid rgba(155, 184, 160, 0.2);
+  border-radius: 8px;
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  border-color: var(--accent-sage);
+  background: rgba(155, 184, 160, 0.1);
+  transform: translateY(-2px);
+}
+
+.pagination-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.pagination-btn.active {
+  background: var(--accent-sage);
+  color: var(--bg-main);
+  border-color: var(--accent-sage);
+  font-weight: 600;
+}
+
+.pagination-ellipsis {
+  color: var(--text-muted);
+  padding: 0 0.25rem;
+  user-select: none;
+}
+
+@media (max-width: 1024px) {
+  .wall-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 768px) {
@@ -248,5 +329,11 @@
   .wall-card {
     padding: 1.5rem;
     min-height: 150px;
+  }
+
+  .pagination-btn {
+    min-width: 2.25rem;
+    height: 2.25rem;
+    font-size: 0.9rem;
   }
 }
